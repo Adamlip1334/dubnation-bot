@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, args) => {
     ];
     let gameCount = [];
     for(game of gamesList){
-      gameCount.push([game[1], apiJSON[game[0]].players]);
+      gameCount.push([game[1], apiJSON.games[game[0]].players]);
     }
     gameCount.sort(function(a, b) {
         return b[1] - a[1];
@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
    .setThumbnail(`https://cdn.discordapp.com/attachments/792226377113796618/814930561671757905/AAUvwnjTWypaip_yzS5ajG97GEJ5YGSZnvan4CxFv0KZ6gs900-c-k-c0x00ffffff-no-rj.png`)
    .setColor(randomColor)
     for(game of gameCount){
-      embed.addField(gameCount[0], gameCount[1], true);
+      embed.addField(game[0], game[1], true);
     }
     message.reply({embed});
   })
