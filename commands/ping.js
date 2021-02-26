@@ -9,7 +9,6 @@ module.exports.run = async (bot, message, args) => {
     .setTitle(`Ping: ${Date.now() - message.createdTimestamp}ms`)
     .setColor(randomColor)
   message.reply({embed});
-  })
 }
 //name this whatever the command name is.
 module.exports.help = {
