@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
       ["MAIN_LOBBY", "Main Lobby"],
       ["TOURNAMENT_LOBBY", "Tournament Lobby"],
       ["LEGACY", "Classic"],
-      "SPEED_UHC", "Speed UHC"],
+      ["SPEED_UHC", "Speed UHC"],
       ["REPLAY", "Replays"],
       ["PROTOTYPE", "Prototype"],
       ["SUPER_SMASH", "Smash Heroes"],
