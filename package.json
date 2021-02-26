@@ -9,12 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "datejs": "^1.0.0-rc3",
-    "discord.gg": "0.0.6",
     "discord.js": "^12.5.1",
     "fetch": "^1.1.0",
     "node": "^15.4.0",
-    "node-fetch": "^2.6.1",
-    "superagent": "^6.1.0"
+    "node-fetch": "^2.6.1"
   }
 }
