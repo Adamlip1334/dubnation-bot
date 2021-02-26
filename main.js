@@ -1,8 +1,32 @@
 const Discord = require("discord.js")
 const config = require("./config.json")
 const bot = new Discord.Client();
+const chalk = require('chalk');
 const fs = require("fs");
 bot.commands = new Discord.Collection();
+
+const SUCCESS = chalk.hex('#43B581'); 
+const INFO = chalk.hex('#FF73FA');
+const LOG = chalk.hex('#44DDBF');
+
+let originalConsoleLog = console.log;
+console.log = function () {
+    args = [];
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let hours = date.getUTCHours().toString().padStart(2, '0');
+    let minutes = date.getUTCMinutes().toString().padStart(2, '0');
+    let seconds = date.getUTCSeconds().toString().padStart(2, '0');
+    args.push(`${LOG(`[LOG]`)} ${INFO(`[${day}/${month}/${year} | ${hours}:${minutes}:${seconds} UTC]`)}`);
+    for (var i = 0; i < arguments.length; i++) {
+        args.push(arguments[i]);
+    }
+    originalConsoleLog.apply(console, args);
+}
+
+
 if(config.token === "setmeplease") return console.log("Set your token up! Go to https://www.discordapp.com/developers and generate a token from a bot user.");
 
 fs.readdir("./commands/", (err, files) => {
@@ -38,6 +62,7 @@ bot.on("message", async message => {
   let command = content[0];
   let args = content.slice(1);
   let prefix = config.prefix;
+  console.log(SUCCESS(`${message.author.tag}: ${message.content}`));
   
  
 
