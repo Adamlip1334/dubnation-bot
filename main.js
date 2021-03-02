@@ -1,5 +1,4 @@
 const Discord = require("discord.js")
-const config = require("./config.json")
 const bot = new Discord.Client();
 const chalk = require('chalk');
 const fs = require("fs");
@@ -8,6 +7,17 @@ bot.commands = new Discord.Collection();
 const SUCCESS = chalk.hex('#43B581'); 
 const INFO = chalk.hex('#FF73FA');
 const LOG = chalk.hex('#44DDBF');
+
+let token = '';
+let prefix = '';
+if (fs.existsSync('./config.json')) {
+	const tokenFile = require('./config.json');
+	token = tokenFile.token;
+  prefix = tokenFile.prefix;
+} else {
+	token = process.env.token;
+  prefix = process.env.prefix;
+}
 
 let originalConsoleLog = console.log;
 console.log = function () {
@@ -25,9 +35,6 @@ console.log = function () {
     }
     originalConsoleLog.apply(console, args);
 }
-
-
-if(config.token === "setmeplease") return console.log("Set your token up! Go to https://www.discordapp.com/developers and generate a token from a bot user.");
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -61,7 +68,6 @@ bot.on("message", async message => {
   let content = fixed.split(" ");
   let command = content[0];
   let args = content.slice(1);
-  let prefix = config.prefix;
   console.log(SUCCESS(`${message.author.tag}: ${message.content}`));
   
  
@@ -78,4 +84,4 @@ bot.on("message", async message => {
 })
 
 
-bot.login(config.token)
+bot.login(token)
