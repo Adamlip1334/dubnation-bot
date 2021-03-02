@@ -10,13 +10,16 @@ const LOG = chalk.hex('#44DDBF');
 
 let token = '';
 let prefix = '';
+let api = '';
 if (fs.existsSync('./config.json')) {
 	const tokenFile = require('./config.json');
 	token = tokenFile.token;
   prefix = tokenFile.prefix;
+  api = tokenFile["api-key"];
 } else {
 	token = process.env.token;
   prefix = process.env.prefix;
+  api = process.env.api;
 }
 
 let originalConsoleLog = console.log;
@@ -85,3 +88,11 @@ bot.on("message", async message => {
 
 
 bot.login(token)
+
+exports.tokens = function getTokens() {
+	return {
+		token: token,
+		prefix: prefix, 
+		 api: api
+	}
+}
