@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
-const config = require("../config.json");
 
 module.exports.run = async (bot, message, args) => {
   //this is where the actual code for the command goes
