@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require('node-fetch');
-const config = require("../config.json")
+const token = require("../main.js")
 
 const bot = new Discord.Client();
 exports.run = async (client, message, args) => {
@@ -8,10 +8,8 @@ exports.run = async (client, message, args) => {
   let user = message.mentions.users.first() || message.author
   
   let randomColor = Math.floor(Math.random()*16777215).toString(16);
-  console.log(config["api-key"]);
-  let api = `https://api.hypixel.net/status?key=${config["api-key"]}&uuid=`;
 
-
+  let api = `https://api.hypixel.net/status?key=${token.api}&uuid=`;
   let username = args.join(' ');
   if(!username){
     return message.reply('Please input a name!');
