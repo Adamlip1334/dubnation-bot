@@ -15,7 +15,7 @@ if (fs.existsSync('./config.json')) {
 	const tokenFile = require('./config.json');
 	token = tokenFile.token;
   prefix = tokenFile.prefix;
-  api = tokenFile["api-key"];
+  api = tokenFile["apikey"];
 } else {
 	token = process.env.token;
   prefix = process.env.prefix;
@@ -89,10 +89,5 @@ bot.on("message", async message => {
 
 bot.login(token)
 
-exports.tokens = function getTokens() {
-	return {
-		token: token,
-		prefix: prefix, 
-		 api: api
-	}
-}
+exports.token = token;
+exports.api = api;

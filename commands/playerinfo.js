@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
-const config = require("../config.json")
+const token = require("../main.js")
 
 module.exports.run = async (bot, message, args) => {
   //this is where the actual code for the command goes
@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
   console.log(`username is ${username}`)
 
 
-  let api = `https://api.hypixel.net/player?uuid=${uuid}&key=${config["api-key"]}`;
+  let api = `https://api.hypixel.net/player?uuid=${uuid}&key=${token.api}`;
   console.log(api);
 
 
@@ -67,7 +67,6 @@ module.exports.run = async (bot, message, args) => {
     {name: `\`•\` Network Level: **${networkLevel}** \n\`•\` First Login: **${firstLogin}** \n\`•\` Last Login: **${lastLogin}** \n\`•\` Karma: **${karmaStr}**`, value: `\u200B ` ,inline: true },
     {name:`\`•\` Version: **${version}** \n\`•\` Last Game: **${lastGame}**` , value: `\u200B`, inline: true})
 
-console.log({embed});
     message.reply({embed});
   })       
 }
