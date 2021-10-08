@@ -9,7 +9,7 @@ module.exports = {
 		.setDescription('Gets the avatar of the mentioned user.'),
 	async execute(interaction, client) {
 		let user = interaction.options.getUser('user');
-		if (!user)  user = interaction.author;
+		if (!user)  user = interaction.user;
         
 		let emb = new MessageEmbed()
 			.setTitle(`${user.tag}'s Avatar`)
