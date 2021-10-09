@@ -10,13 +10,14 @@ module.exports = {
 		.setDescription('Kick a mentioned user from a voice call.'),
 	async execute(interaction, client) {
 
-		if (!interaction.member.permissions.has(Permissions.FLAGS.MOVE_MEMBERS)) return interaction.reply({ content: '**❌ | You do not have the right permissions to kick this member.**', ephemeral: true });
+		if (!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return interaction.reply({ content: '**❌ | You do not have the right permissions to kick this member.**', ephemeral: true });
 
 		const user = interaction.options.getUser('user');
         
 		if (!user) return interaction.reply({ content: '**❌ | You need to provide a valid member to kick.**', ephemeral: true });
 
 		let findMem = await search.searchMember(interaction, user.tag);
+		console.log(findMem.voice);
 		if (!findMem.voice.channel) return interaction.reply({ content: '**❌ | This user is not in a voice channel.**', ephemeral: true });
 
 		let emb = new MessageEmbed()
@@ -24,7 +25,7 @@ module.exports = {
 			.addField('Server', `**\`${interaction.guild.name}\`**`, true)
 			.addField('Moderator', `**\`${interaction.member.user.tag}\`**`, true)
 			.addField('User', `**\`${user.tag}\`**`, true)
-			.addField('Channel', `**\`${findMem.voice.channel.name}\`**`, false)
+			.addField('Channel', `**<#${findMem.voice.channel.id}>**`, false)
 			.setThumbnail(user.displayAvatarURL())
 			.setTimestamp()
 			.setFooter(config.embeds.embedFooterText)
