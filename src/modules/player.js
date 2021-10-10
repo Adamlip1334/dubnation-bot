@@ -23,8 +23,13 @@ module.exports = {
         const resource = createAudioResource(stream, { inputType: StreamType.Arbitrary });
         player.play(resource);
         await channel.send(`Now Playing: https://www.youtube.com/watch?v=${song}`);
-        player.on(AudioPlayerStatus.Idle, () => {
-            songqueue.songs.shift();
+        player.on(AudioPlayerStatus.Idle, () => {  
+            oldsong = songqueue.songs.shift();
+            if(songqueue.mode == "loop") {
+                songqueue.songs.unshift(oldsong);
+            } else if(songqueue.mode == "loopqueue") {
+                songqueue.songs.push(oldsong);
+            }
             this.player( guild, channel, songqueue.songs[0]);
         })
     }

@@ -41,6 +41,7 @@ module.exports = {
                 adapterCreator: interaction.guild.voiceAdapterCreator,
             });
             queue.queue[interaction.guild.id] = { 
+                mode: "default",
                 connection: connection,
                 songs: [song] 
             }
