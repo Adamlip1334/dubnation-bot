@@ -8,8 +8,8 @@ module.exports = {
 		.setDescription('Displays the latency of the bot to discord.'),
 	async execute(interaction, client) {
 		let emb = new MessageEmbed()
-            .addField('**Ping**',`🏓 Latency is ${client.ws.ping}ms.`)
-			.addField('**Ping**',`🏓 Latency is ${Date.now() - interaction.createdTimestamp}ms.`)
+            .addField('**Ping**',`🏓 Bots latency is ${client.ws.ping}ms.`)
+			.addField('**Ping**',`🏓 Your latency is ${Date.now() - interaction.createdTimestamp}ms.`)
 			.setTimestamp()  
 			.setFooter(config.embeds.embedFooterText)
 			.setColor('AQUA');
