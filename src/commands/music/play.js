@@ -1,10 +1,9 @@
 const config = require('../../../config');
 const search = require('discord.js-search');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed, Permissions } = require('discord.js');
-const ytdl = require('ytdl-core');
 const fetch = require('node-fetch');
-
+const queue = require('../../index');
+const songplayer = require('../../modules/player');
 const {
 	AudioPlayerStatus,
 	StreamType,
@@ -12,7 +11,6 @@ const {
 	createAudioResource,
 	joinVoiceChannel,
 } = require('@discordjs/voice');
-
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -35,20 +33,22 @@ module.exports = {
         }
         let findMem = await search.searchMember(interaction, interaction.user.tag);
 		if (!findMem.voice.channel) return interaction.reply({ content: '**❌ | You are not in a voice channel.**' });
-        const connection = joinVoiceChannel({
-            channelId: findMem.voice.channel.id,
-            guildId: interaction.guildId,
-            adapterCreator: interaction.guild.voiceAdapterCreator,
-        });
-        const stream = ytdl(song, { filter: 'audioonly' });
-        const resource = createAudioResource(stream, { inputType: StreamType.Arbitrary });
-        const player = createAudioPlayer();
-        
-        player.play(resource);
-        connection.subscribe(player);
-        
-        player.on(AudioPlayerStatus.Idle, () => connection.destroy());
 
-        return interaction.reply('Now playing: https://www.youtube.com/watch?v=' + song);
+        if(!queue.queue[interaction.guild.id]) {
+            const connection = joinVoiceChannel({
+                channelId: findMem.voice.channel.id,
+                guildId: interaction.guild.id,
+                adapterCreator: interaction.guild.voiceAdapterCreator,
+            });
+            queue.queue[interaction.guild.id] = { 
+                connection: connection,
+                songs: [song] 
+            }
+            songplayer.player(interaction.guild, interaction.channel, song);
+            return interaction.reply('Now playing: https://www.youtube.com/watch?v=' + song)
+        } else {
+            queue.queue[interaction.guild.id].songs.push(song);
+            return interaction.reply('Song https://www.youtube.com/watch?v=' + song + ' has been added to the queue.')
+        }
 	}
 };
