@@ -18,6 +18,7 @@ module.exports = {
             return;
         }
         const player = createAudioPlayer();
+        queue.queue[guild.id].player = player;
         songqueue.connection.subscribe(player);
         const stream = ytdl(song, { filter: 'audioonly' });
         const resource = createAudioResource(stream, { inputType: StreamType.Arbitrary });
