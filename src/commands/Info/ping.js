@@ -9,6 +9,7 @@ module.exports = {
 	async execute(interaction, client) {
 		let emb = new MessageEmbed()
             .addField('**Ping**',`🏓 Latency is ${client.ws.ping}ms.`)
+			.addField('**Ping**',`🏓 Latency is ${Date.now() - interaction.createdTimestamp}ms.`)
 			.setTimestamp()  
 			.setFooter(config.embeds.embedFooterText)
 			.setColor('AQUA');
