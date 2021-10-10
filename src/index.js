@@ -11,7 +11,7 @@ const client = new Client({
 		}
 	}
 });
-
+exports.queue = {};
 client.commands = new Collection();
 
 require('dotenv').config();

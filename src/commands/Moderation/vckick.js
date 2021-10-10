@@ -17,7 +17,6 @@ module.exports = {
 		if (!user) return interaction.reply({ content: '**❌ | You need to provide a valid member to kick.**', ephemeral: true });
 
 		let findMem = await search.searchMember(interaction, user.tag);
-		console.log(findMem.voice);
 		if (!findMem.voice.channel) return interaction.reply({ content: '**❌ | This user is not in a voice channel.**', ephemeral: true });
 
 		let emb = new MessageEmbed()
