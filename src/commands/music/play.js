@@ -10,6 +10,8 @@ const {
 	createAudioPlayer,
 	createAudioResource,
 	joinVoiceChannel,
+    VoiceConnectionStatus, 
+    entersState,
 } = require('@discordjs/voice');
 
 module.exports = {
@@ -39,6 +41,17 @@ module.exports = {
                 channelId: findMem.voice.channel.id,
                 guildId: interaction.guild.id,
                 adapterCreator: interaction.guild.voiceAdapterCreator,
+            });
+            connection.on(VoiceConnectionStatus.Disconnected, async (oldState, newState) => {
+                try {
+                    await Promise.race([
+                        entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
+                        entersState(connection, VoiceConnectionStatus.Connecting, 5_000),
+                    ]);
+                } catch (error) {
+                    connection.destroy();
+                    delete queue.queue[interaction.guild.id];
+                }
             });
             queue.queue[interaction.guild.id] = { 
                 mode: "default",
