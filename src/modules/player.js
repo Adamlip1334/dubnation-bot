@@ -20,7 +20,15 @@ module.exports = {
         const player = createAudioPlayer();
         queue.queue[guild.id].player = player;
         songqueue.connection.subscribe(player);
-        const stream = ytdl(song, { filter: 'audioonly' });
+        const thisplayer = this;
+        const metadata = await ytdl.getInfo(song).catch(async function() {});
+        if(!metadata) {
+            await channel.send(`Failed to play song. Song has been skipped.`);
+            songqueue.songs.shift();
+            thisplayer.player( guild, channel, songqueue.songs[0]); 
+            return;
+        }
+        const stream = ytdl.downloadFromInfo(metadata, { filter: 'audioonly' })
         const resource = createAudioResource(stream, { inputType: StreamType.Arbitrary });
         player.play(resource);
         await channel.send(`Now Playing: https://www.youtube.com/watch?v=${song}`);
