@@ -13,8 +13,21 @@ module.exports = {
             .addField('**Help**','```Shows this help message```')
             .addField('**Avatar**','```Displays avatar of user, provides links to the avatar.```')
             .addField('**VcKick**','```Kicks user from the voice channel they are in.```')
+			.addField('**Ping**','```Displays the latency of the bot.```')
             .addField('**Kick**','```Kicks the user from the guild.```')
             .addField('**Say**','```Repeats message given by the user in an embed.```')
+
+
+			.addField('**Play**','```Plays a specified song.```')
+			.addField('**Clear**','```Clears the song queue.```')
+			.addField('**Leave**','```Stops playing songs and leaves.```')
+			.addField('**Loop**','```Loops the currently playing song.```')
+			.addField('**LoopQueue**','```Loops the queue.```')
+			.addField('**NowPlaying**','```Displays the current playing song.```')
+			.addField('**Pause**','```Pauses/unpauses the current song.```')
+			.addField('**Queue**','```Displays the song queue.```')
+			.addField('**Skip**','```Skips the current song.```')
+
 			.setTimestamp()
 			.setFooter(config.embeds.embedFooterText)
 			.setColor('AQUA');
