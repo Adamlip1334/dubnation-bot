@@ -1,6 +1,6 @@
 # dubnation-bot
 ![](https://media4.giphy.com/media/1mGIKKtQbSwlvoRPtI/giphy.gif?cid=790b7611a41091a6e618a988b27f6578e548d03284a4faf5&rid=giphy.gif)
-## Instillation
+## Installation
 ```# Clone the repository
 git clone https://github.com/Adamlip1334/dubnation-bot.git
 
@@ -9,6 +9,9 @@ cd dubnation-bot/
 
 # Install the dependencies
 npm install
+
+# Run index.js
+node .
 ```
 
 ## Setup
