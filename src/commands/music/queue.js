@@ -7,7 +7,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('queue')
-		.setDescription('Lists the song queue.'),
+		.setDescription('Displays the song queue.'),
 	async execute(interaction, client) {
         if(queue.queue[interaction.guild.id] && queue.queue[interaction.guild.id].songs.length > 0) {
             const list = queue.queue[interaction.guild.id].songs;

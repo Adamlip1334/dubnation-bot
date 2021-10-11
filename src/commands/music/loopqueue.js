@@ -6,7 +6,7 @@ const queue = require('../../index');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('loopqueue')
-		.setDescription('Loops the currently playing song.'),
+		.setDescription('Loops the queue.'),
 	async execute(interaction, client) {
 		if(queue.queue[interaction.guild.id]) {
             if(queue.queue[interaction.guild.id].mode == "loopqueue") {

@@ -16,8 +16,6 @@ module.exports = {
 			.addField('**Ping**','```Displays the latency of the bot.```')
             .addField('**Kick**','```Kicks the user from the guild.```')
             .addField('**Say**','```Repeats message given by the user in an embed.```')
-
-
 			.addField('**Play**','```Plays a specified song.```')
 			.addField('**Clear**','```Clears the song queue.```')
 			.addField('**Leave**','```Stops playing songs and leaves.```')

@@ -7,7 +7,7 @@ const { AudioPlayerStatus } = require('@discordjs/voice');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('pause')
-		.setDescription('Pauses/unpauses the current song.'),
+		.setDescription('Pauses/unpauses the current playing song.'),
 	async execute(interaction, client) {
         if(queue.queue[interaction.guild.id].player) {
             if(queue.queue[interaction.guild.id].player.state.status == AudioPlayerStatus.Paused) {

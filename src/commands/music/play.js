@@ -46,7 +46,7 @@ module.exports = {
                 songs: [song] 
             }
             songplayer.player(interaction.guild, interaction.channel, song);
-            return interaction.reply('Song https://www.youtube.com/watch?v=' + song + ' has been added to the queue.')
+            return interaction.reply('Added to the queue.')
         } else {
             queue.queue[interaction.guild.id].songs.push(song);
             return interaction.reply('Song https://www.youtube.com/watch?v=' + song + ' has been added to the queue.')

@@ -7,7 +7,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('nowplaying')
-		.setDescription('Lists the song queue.'),
+		.setDescription('Displays the current playing song.'),
 	async execute(interaction, client) {
         if(queue.queue[interaction.guild.id]) {
             const song = queue.queue[interaction.guild.id].songs[0];
