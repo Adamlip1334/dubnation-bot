@@ -1,4 +1,4 @@
-const ytdl = require('ytdl-core');
+const ytdl = require('play-dl');
 const queue = require('../index');
 
 const {
@@ -20,16 +20,8 @@ module.exports = {
         const player = createAudioPlayer();
         queue.queue[guild.id].player = player;
         songqueue.connection.subscribe(player);
-        const thisplayer = this;
-        const metadata = await ytdl.getInfo(song).catch(async function() {});
-        if(!metadata) {
-            await channel.send(`Failed to play song. Song has been skipped.`);
-            songqueue.songs.shift();
-            thisplayer.player( guild, channel, songqueue.songs[0]); 
-            return;
-        }
-        const stream = ytdl.downloadFromInfo(metadata, { filter: 'audioonly' })
-        const resource = createAudioResource(stream, { inputType: StreamType.Arbitrary });
+        let stream = await ytdl.stream(song);
+        const resource = createAudioResource(stream.stream, { inputType: stream.type });
         player.play(resource);
         await channel.send(`Now Playing: https://www.youtube.com/watch?v=${song}`);
         player.on(AudioPlayerStatus.Idle, () => {  
@@ -39,7 +31,7 @@ module.exports = {
             } else if(songqueue.mode == "loopqueue") {
                 songqueue.songs.push(oldsong);
             }
-            this.player( guild, channel, songqueue.songs[0]);
+            this.player(guild, channel, songqueue.songs[0]);
         })
     }
 }
