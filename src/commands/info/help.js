@@ -25,6 +25,7 @@ module.exports = {
 			.addField('**Pause**','```Pauses/unpauses the current song.```')
 			.addField('**Queue**','```Displays the song queue.```')
 			.addField('**Skip**','```Skips the current song.```')
+			.addField('**Shuffle**','```Shuffles the currently playing songs.```')
 
 			.setTimestamp()
 			.setFooter(config.embeds.embedFooterText)
