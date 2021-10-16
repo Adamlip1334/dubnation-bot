@@ -39,7 +39,8 @@ Command | Description
 `/loopqueue`     | Loops the queue.
 `/nowplaying`    | Displays the current playing song.
 `/pause`         | Pauses/unpauses the current song.
-`/queue    `     | Display the song queue.
+`/queue`         | Display the song queue.
 `/skip`          | Skips the current song.
+`/shuffle`       | Shuffles the songs in the queue.
 
 
