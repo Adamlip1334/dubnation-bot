@@ -42,5 +42,6 @@ Command | Description
 `/queue`         | Display the song queue.
 `/skip`          | Skips the current song.
 `/shuffle`       | Shuffles the songs in the queue.
+`/playnext`      | Plays the provided song next in the queue.
 
 
