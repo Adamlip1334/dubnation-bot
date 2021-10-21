@@ -1,5 +1,5 @@
 # dubnation-bot
-![](https://media4.giphy.com/media/1mGIKKtQbSwlvoRPtI/giphy.gif?cid=790b7611a41091a6e618a988b27f6578e548d03284a4faf5&rid=giphy.gif)
+![](https://github.com/Adamlip1334/dubnation-bot/blob/main/assets/capture.gif)
 ## Installation
 ```# Clone the repository
 git clone https://github.com/Adamlip1334/dubnation-bot.git
