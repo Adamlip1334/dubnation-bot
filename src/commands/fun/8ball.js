@@ -2,17 +2,17 @@ const config = require('../../../config');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('8ball')
-		.addStringOption(option => option.setName('question').setDescription('Question to ask the magical 8 ball'))
-		.setDescription('Asks the magical 8 ball a question'),
-	async execute(interaction, client) {
+    data: new SlashCommandBuilder()
+        .setName('8ball')
+        .addStringOption(option => option.setName('question').setDescription('Question to ask the magical 8 ball'))
+        .setDescription('Asks the magical 8 ball a question'),
+    async execute(interaction, client) {
         const question = interaction.options.getString('question');
-
+            
         if (!question) {
             return interaction.reply('You need to ask a question!');
-        }
-		const reponse = [
+        }       
+        const reponse = [
             'It is certain.',
             'It is decidedly so.',
             'Without a doubt.',
@@ -36,6 +36,6 @@ module.exports = {
             'Ask Ibby.'
         ];
         let randomResponse = reponse[Math.floor(Math.random() * reponse.length)];
-		await interaction.reply(`You asked: ${question}\n${randomResponse}`);
+        await interaction.reply(`You asked: ${question}\n${randomResponse}`);
 	}
 };
