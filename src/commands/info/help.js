@@ -25,6 +25,7 @@ module.exports = {
 			.addField('**Pause**','```Pauses/unpauses the current song.```')
 			.addField('**Queue**','```Displays the song queue.```')
 			.addField('**Skip**','```Skips the current song.```')
+			.addField('**8ball**','```Asks the magical 8 ball a question.```')
 			.addField('**Shuffle**','```Shuffles the currently playing songs.```')
 			.addField('**PlayNext**','```Plays the provided song next in the queue.```')
 
