@@ -38,5 +38,5 @@ Command | Description
 `/pause`         | Pauses/unpauses the current song.
 `/queue    `     | Display the song queue.
 `/skip`          | Skips the current song.
-
+`/8ball`         | Asks the magical 8 ball a question
 
