@@ -1,6 +1,6 @@
 # dubnation-bot
-![](https://media4.giphy.com/media/1mGIKKtQbSwlvoRPtI/giphy.gif?cid=790b7611a41091a6e618a988b27f6578e548d03284a4faf5&rid=giphy.gif)
-## Instillation
+![](https://github.com/Adamlip1334/dubnation-bot/blob/main/assets/capture.gif)
+## Installation
 ```# Clone the repository
 git clone https://github.com/Adamlip1334/dubnation-bot.git
 
@@ -9,6 +9,9 @@ cd dubnation-bot/
 
 # Install the dependencies
 npm install
+
+# Run index.js
+node .
 ```
 
 ## Setup
@@ -36,7 +39,9 @@ Command | Description
 `/loopqueue`     | Loops the queue.
 `/nowplaying`    | Displays the current playing song.
 `/pause`         | Pauses/unpauses the current song.
-`/queue    `     | Display the song queue.
+`/queue`         | Display the song queue.
 `/skip`          | Skips the current song.
 `/8ball`         | Asks the magical 8 ball a question
+`/shuffle`       | Shuffles the songs in the queue.
+`/playnext`      | Plays the provided song next in the queue.
 

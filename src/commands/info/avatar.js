@@ -16,7 +16,7 @@ module.exports = {
 			.addField('PNG', `[**\`LINK\`**](${user.displayAvatarURL({format: 'png'})})`, true)
 			.addField('JPG', `[**\`LINK\`**](${user.displayAvatarURL({format: 'jpg'})})`, true)
 			.addField('WEBP', `[**\`LINK\`**](${user.displayAvatarURL({format: 'webp'})})`, true)
-
+			// needs .jfif support
 			.setImage(user.displayAvatarURL())
 			.setTimestamp()
 			.setFooter(config.embeds.embedFooterText)
