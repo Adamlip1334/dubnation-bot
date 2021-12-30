@@ -3,7 +3,7 @@ module.exports = {
 	name: 'messageCreate',
 	async execute(message, client) {
 		words = message.content.split(" ").reduce(function(obj, name) {
-			if(name == '_id' || name == "")
+			if(!/^[a-zA-Z0-9]*$/.test(name))
 				return obj;
 			obj[name] = obj[name] ? ++obj[name] : 1;
 			return obj;
