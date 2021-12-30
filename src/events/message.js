@@ -2,8 +2,8 @@ const db = require('../index').db;
 module.exports = {
 	name: 'messageCreate',
 	async execute(message, client) {
-		words = message.content.toLowerCase().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ").split(" ").reduce(function(obj, name) {
-			if(!/^[a-z0-9]*$/.test(name))
+		words = message.content.toLowerCase().replace(/['.?,!]/g, "").replace(/\s+/g, " ").split(" ").reduce(function(obj, name) {
+			if(!/^[a-z]*$/.test(name))
 				return obj;
 			obj[name] = obj[name] ? ++obj[name] : 1;
 			return obj;
