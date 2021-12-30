@@ -1,8 +1,10 @@
 const fs = require('fs');
-const colour = require('colour');
 const { Client, Intents, Collection } = require('discord.js');
+const { MongoClient } = require("mongodb");
+require('dotenv').config();
+require('colour');
 const client = new Client({
-	intents:[Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES],
+	intents:[Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MESSAGES],
 	presence: {
 		status: 'online',
 		activity: {
@@ -12,9 +14,9 @@ const client = new Client({
 	}
 });
 exports.queue = {};
+exports.db = new MongoClient(process.env.MONGOURI);
+exports.db.connect();
 client.commands = new Collection();
-
-require('dotenv').config();
 
 const functions = fs.readdirSync('./src/functions').filter(file => file.endsWith('.js'));
 const eventsFiles = fs.readdirSync('./src/events').filter(file => file.endsWith('.js'));
