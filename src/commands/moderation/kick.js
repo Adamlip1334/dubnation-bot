@@ -15,7 +15,7 @@ module.exports = {
 
 		const user = interaction.options.getUser('user');
 		let reason = interaction.options.getString('reason');
-        
+
 		if (!user) return interaction.reply('**❌ | You need to provide a valid member to kick.**');
 		if (!reason) reason = 'No reason given.';
 
@@ -39,7 +39,7 @@ module.exports = {
 			return interaction.reply('**❌ | I do not have the correct permissions to kick this member.**');
 		}
 
-		await interaction.reply({embeds: [emb]});
+		await interaction.reply({ embeds: [emb] });
 	}
 };
 

@@ -9,10 +9,10 @@ module.exports = {
 	async execute(interaction, client) {
 		let emb = new MessageEmbed()
 			.setTitle(`Sim Help`)
-            .addField('Options can be found here:', 'https://observablehq.com/@spencermountain/compromise-tags')
-            .setTimestamp()
+			.addField('Options can be found here:', 'https://observablehq.com/@spencermountain/compromise-tags')
+			.setTimestamp()
 			.setFooter(config.embeds.embedFooterText)
 			.setColor('AQUA');
-		await interaction.reply({embeds: [emb]});
+		await interaction.reply({ embeds: [emb] });
 	}
 };

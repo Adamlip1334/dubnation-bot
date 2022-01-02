@@ -20,15 +20,15 @@ module.exports = {
 		let say = interaction.options.getString('say');
 		let title = interaction.options.getString('title');
 		let channel = interaction.options.getChannel('channel');
-        
+
 		if (!say) return interaction.reply('**❌ | You need to provide something to say.**');
 		else emb.setDescription(say);
 
 		if (title) emb.setTitle(title);
 		if (!channel) {
-			interaction.channel.send({embeds: [emb]});
+			interaction.channel.send({ embeds: [emb] });
 		} else {
-			channel.send({embeds: [emb]});
+			channel.send({ embeds: [emb] });
 		}
 		return await interaction.reply('Message sent');
 	}

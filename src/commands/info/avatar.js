@@ -9,18 +9,17 @@ module.exports = {
 		.setDescription('Gets the avatar of the mentioned user.'),
 	async execute(interaction, client) {
 		let user = interaction.options.getUser('user');
-		if (!user)  user = interaction.user;
-        
+		if (!user) user = interaction.user;
+
 		let emb = new MessageEmbed()
 			.setTitle(`${user.tag}'s Avatar`)
-			.addField('PNG', `[**\`LINK\`**](${user.displayAvatarURL({format: 'png'})})`, true)
-			.addField('JPG', `[**\`LINK\`**](${user.displayAvatarURL({format: 'jpg'})})`, true)
-			.addField('WEBP', `[**\`LINK\`**](${user.displayAvatarURL({format: 'webp'})})`, true)
-			// needs .jfif support
+			.addField('PNG', `[**\`LINK\`**](${user.displayAvatarURL({ format: 'png' })})`, true)
+			.addField('JPG', `[**\`LINK\`**](${user.displayAvatarURL({ format: 'jpg' })})`, true)
+			.addField('WEBP', `[**\`LINK\`**](${user.displayAvatarURL({ format: 'webp' })})`, true)
 			.setImage(user.displayAvatarURL())
 			.setTimestamp()
 			.setFooter(config.embeds.embedFooterText)
 			.setColor('AQUA');
-		await interaction.reply({embeds: [emb]});
+		await interaction.reply({ embeds: [emb] });
 	}
 };
