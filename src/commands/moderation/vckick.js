@@ -13,7 +13,7 @@ module.exports = {
 		if (!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return interaction.reply({ content: '**❌ | You do not have the right permissions to kick this member.**', ephemeral: true });
 
 		const user = interaction.options.getUser('user');
-        
+
 		if (!user) return interaction.reply({ content: '**❌ | You need to provide a valid member to kick.**', ephemeral: true });
 
 		let findMem = await search.searchMember(interaction, user.tag);
@@ -36,7 +36,7 @@ module.exports = {
 			return interaction.reply({ content: '**❌ | I do not have the correct permissions to disconnect this member.**', ephemeral: true });
 		}
 
-		await interaction.reply({embeds: [emb], ephemeral: true});
+		await interaction.reply({ embeds: [emb], ephemeral: true });
 	}
 };
 

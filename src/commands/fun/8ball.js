@@ -8,10 +8,10 @@ module.exports = {
         .setDescription('Asks the magical 8 ball a question'),
     async execute(interaction, client) {
         const question = interaction.options.getString('question');
-            
+
         if (!question) {
             return interaction.reply('You need to ask a question!');
-        }       
+        }
         const reponse = [
             'It is certain.',
             'It is decidedly so.',
@@ -37,5 +37,5 @@ module.exports = {
         ];
         let randomResponse = reponse[Math.floor(Math.random() * reponse.length)];
         await interaction.reply(`You asked: ${question}\n${randomResponse}`);
-	}
+    }
 };

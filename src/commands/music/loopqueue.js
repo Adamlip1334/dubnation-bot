@@ -8,16 +8,16 @@ module.exports = {
 		.setName('loopqueue')
 		.setDescription('Loops the queue.'),
 	async execute(interaction, client) {
-		if(queue.queue[interaction.guild.id]) {
-            if(queue.queue[interaction.guild.id].mode == "loopqueue") {
+		if (queue.queue[interaction.guild.id]) {
+			if (queue.queue[interaction.guild.id].mode == "loopqueue") {
 				queue.queue[interaction.guild.id].mode = "default";
 				return interaction.reply('Disabled loop for the queue.')
 			} else {
 				queue.queue[interaction.guild.id].mode = "loopqueue";
 				return interaction.reply('Enabled loop for the queue.')
 			}
-        } else {
-            return interaction.reply('No songs are playing.')
-        }
+		} else {
+			return interaction.reply('No songs are playing.')
+		}
 	}
 };
