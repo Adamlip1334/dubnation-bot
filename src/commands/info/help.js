@@ -7,7 +7,6 @@ module.exports = {
 		.setName('help')
 		.setDescription('List commands from the bot.'),
 	async execute(interaction, client) {
-        let test = 'test'
 		let emb = new MessageEmbed()
 			.setTitle(`Help`)
             .addField('**Help**','```Shows this help message```')
@@ -28,7 +27,7 @@ module.exports = {
 			.addField('**8ball**','```Asks the magical 8 ball a question.```')
 			.addField('**Shuffle**','```Shuffles the currently playing songs.```')
 			.addField('**PlayNext**','```Plays the provided song next in the queue.```')
-
+			.addField('**Sim**', '```Simulates a given user.```')
 			.setTimestamp()
 			.setFooter(config.embeds.embedFooterText)
 			.setColor('AQUA');
