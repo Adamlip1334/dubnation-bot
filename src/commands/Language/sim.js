@@ -11,9 +11,9 @@ module.exports = {
 		.addStringOption(option => option.setName('format').setDescription('See /simhelp for help on formatting.').setRequired(true))
 		.setDescription('Simulates the given user.'),
 	async execute(interaction, client) {
+		await interaction.deferReply();
 		let user = interaction.options.getUser('user');
 		let format = interaction.options.getString('format');
-
 		let messages = await db.db('messages').collection(user.id).find().next();
 		delete messages['_id'];
 		let newText = '';
@@ -29,7 +29,7 @@ module.exports = {
 			.setImage(user.displayAvatarURL())
 			.setFooter(newText.substring(0, 2000))
 			.setColor('AQUA');
-		await interaction.reply({ embeds: [emb] });
+		await interaction.editReply({ embeds: [emb] });
 	}
 };
 
