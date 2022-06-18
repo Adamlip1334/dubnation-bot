@@ -6,7 +6,7 @@ module.exports = {
 			return;
 		}
 		words = message.content.toLowerCase().replace(/['.?,!]/g, "").replace(/\s+/g, " ").split(" ").reduce(function (obj, name) {
-			if (!/^[a-z]*$/.test(name))
+			if (!/^[a-z]+$/.test(name))
 				return obj;
 			obj[name] = obj[name] ? ++obj[name] : 1;
 			return obj;
