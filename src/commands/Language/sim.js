@@ -27,7 +27,7 @@ module.exports = {
 		let emb = new MessageEmbed()
 			.setTitle(`${user.tag}`)
 			.setImage(user.displayAvatarURL())
-			.setFooter(newText.substring(0, 2000))
+			.setFooter({ text: newText.substring(0, 2000) })
 			.setColor('AQUA');
 		await interaction.editReply({ embeds: [emb] });
 	}

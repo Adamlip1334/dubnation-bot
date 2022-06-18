@@ -18,7 +18,7 @@ module.exports = {
 			.addField('WEBP', `[**\`LINK\`**](${user.displayAvatarURL({ format: 'webp' })})`, true)
 			.setImage(user.displayAvatarURL())
 			.setTimestamp()
-			.setFooter(config.embeds.embedFooterText)
+			.setFooter({ text: config.embeds.embedFooterText })
 			.setColor('AQUA');
 		await interaction.reply({ embeds: [emb] });
 	}

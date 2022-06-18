@@ -29,7 +29,7 @@ module.exports = {
 			.addField('**PlayNext**', '```Plays the provided song next in the queue.```')
 			.addField('**Sim**', '```Simulates a given user.```')
 			.setTimestamp()
-			.setFooter(config.embeds.embedFooterText)
+			.setFooter({ text: config.embeds.embedFooterText })
 			.setColor('AQUA');
 		await interaction.reply({ embeds: [emb], ephemeral: true });
 	}

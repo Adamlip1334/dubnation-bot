@@ -17,7 +17,7 @@ module.exports = {
                 emb.addField((i + 1) + '.', 'https://www.youtube.com/watch?v=' + list[i]);
             }
             emb.setTimestamp()
-                .setFooter(config.embeds.embedFooterText)
+                .setFooter({ text: config.embeds.embedFooterText })
                 .setColor('AQUA');
             await interaction.reply({ embeds: [emb] });
         } else {
