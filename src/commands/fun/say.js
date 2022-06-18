@@ -15,8 +15,7 @@ module.exports = {
 		let emb = new MessageEmbed()
 			.setTimestamp()
 			.setColor('RANDOM')
-			.setTitle(interaction.user.tag)
-			.setThumbnail(interaction.user.displayAvatarURL());
+			.setFooter({ text: interaction.user.tag, iconURL: interaction.user.displayAvatarURL() });
 
 		let say = interaction.options.getString('say');
 		let title = interaction.options.getString('title');
