@@ -1,7 +1,7 @@
 const config = require('../../../config');
 const search = require('discord.js-search');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const fetch = require('node-fetch');
+const fetch = (...args) => import("node-fetch").then(({default: fetch}) => fetch(...args));
 const queue = require('../../index');
 const songplayer = require('../../modules/player');
 const {

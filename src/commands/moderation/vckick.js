@@ -27,7 +27,7 @@ module.exports = {
 			.addField('Channel', `**<#${findMem.voice.channel.id}>**`, false)
 			.setThumbnail(user.displayAvatarURL())
 			.setTimestamp()
-			.setFooter(config.embeds.embedFooterText)
+			.setFooter({ text: config.embeds.embedFooterText })
 			.setColor('RED');
 
 		try {

@@ -11,7 +11,7 @@ module.exports = {
 			.setTitle(`Sim Help`)
 			.addField('Options can be found here:', 'https://observablehq.com/@spencermountain/compromise-tags')
 			.setTimestamp()
-			.setFooter(config.embeds.embedFooterText)
+			.setFooter({ text: config.embeds.embedFooterText })
 			.setColor('AQUA');
 		await interaction.reply({ embeds: [emb] });
 	}

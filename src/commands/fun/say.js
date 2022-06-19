@@ -15,7 +15,7 @@ module.exports = {
 		let emb = new MessageEmbed()
 			.setTimestamp()
 			.setColor('RANDOM')
-			.setFooter(interaction.user.tag, interaction.user.displayAvatarURL());
+			.setFooter({ text: interaction.user.tag, iconURL: interaction.user.displayAvatarURL() });
 
 		let say = interaction.options.getString('say');
 		let title = interaction.options.getString('title');
@@ -30,6 +30,6 @@ module.exports = {
 		} else {
 			channel.send({ embeds: [emb] });
 		}
-		return await interaction.reply('Message sent');
+		return await interaction.reply({ content: 'Message sent', ephemeral: true });
 	}
 };

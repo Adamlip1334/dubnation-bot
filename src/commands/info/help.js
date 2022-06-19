@@ -29,7 +29,7 @@ module.exports = {
 				.addField('**8ball**', '```Asks the magical 8 ball a question.```')
 				.addField('**Sim**', '```Simulates a given user.```')
 				.setTimestamp()
-				.setFooter(config.embeds.embedFooterText)
+				.setFooter({ text: config.embeds.embedFooterText })
 				.setColor('AQUA');
 			await interaction.reply({ embeds: [emb], ephemeral: true });
 		} else {
@@ -47,7 +47,7 @@ module.exports = {
 				.addField('**Shuffle**', '```Shuffles the currently playing songs.```')
 				.addField('**PlayNext**', '```Plays the provided song next in the queue.```')
 				.setTimestamp()
-				.setFooter(config.embeds.embedFooterText)
+				.setFooter({ text: config.embeds.embedFooterText })
 				.setColor('AQUA');
 			await interaction.reply({ embeds: [emb], ephemeral: true });
 		}
