@@ -1,20 +1,19 @@
 const config = require('../../../config');
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder, SlashCommandStringOption } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
 		.setDescription('List commands from the bot.')
-		.addStringOption(option => {
-			option.setName('category')
+		.addStringOption(new SlashCommandStringOption().setName('category')
 			.setDescription('The category to get help for.')
 			.setRequired(true)
 			.addChoices(
 				{ name: 'general', value: 'general' },
 				{ name: 'music', value: 'music' },
-			);
-		}),
+			)
+		),
 	async execute(interaction, client) {
 		const category = interaction.options.getString('category');
 		if(category === 'general') {
