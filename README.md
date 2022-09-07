@@ -1,7 +1,8 @@
 # dubnation-bot
 ![](https://github.com/Adamlip1334/dubnation-bot/blob/main/assets/capture.gif)
 ## Installation
-```# Clone the repository
+```
+# Clone the repository
 git clone https://github.com/Adamlip1334/dubnation-bot.git
 
 # Enter into the directory
@@ -9,16 +10,26 @@ cd dubnation-bot/
 
 # Install the dependencies
 npm install
-
-# Run index.js
-node .
 ```
 
 ## Setup
 
-.env should look like
-SECRET =  `Discord Bot API Key`
-YTAPI = ` Youtube API Key`
+Set the environment variables
+```sh
+cp .env.example .env
+```
+  
+`.env` Format
+
+SECRET= 'DISCORD API-KEY'
+
+YTAPI= 'YOUTUBE API-KEY'
+
+GUILD= 'GUILD ID'
+
+CLIENT= 'BOT ID'
+
+MONGOURI= 'MONGO URI'
 
 ## Usage
 
