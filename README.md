@@ -18,9 +18,7 @@ Set the environment variables
 ```sh
 cp .env.example .env
 ```
-
-
-
+  
 `.env` Format
 
 SECRET= 'DISCORD API-KEY'
