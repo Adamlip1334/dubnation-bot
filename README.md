@@ -19,6 +19,8 @@ Set the environment variables
 cp .env.example .env
 ```
 
+
+
 `.env` Format
 
 SECRET= 'DISCORD API-KEY'
