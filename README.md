@@ -20,10 +20,15 @@ cp .env.example .env
 ```
 
 `.env` Format
+
 SECRET= 'DISCORD API-KEY'
+
 YTAPI= 'YOUTUBE API-KEY'
+
 GUILD= 'GUILD ID'
+
 CLIENT= 'BOT ID'
+
 MONGOURI= 'MONGO URI'
 
 ## Usage
