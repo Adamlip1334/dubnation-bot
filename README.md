@@ -39,6 +39,8 @@ Command | Description
 --------|------------
 `/kick [user] [reason]` | Kicks the user from the guild.
 `/vckick [user]` | Kicks user from the voice channel they are in.
+`/vckickall [channel]` | Kicks all users from the voice channel specified.
+`/randomvckick [channel]` | Kicks a random user in the voice channel specified.
 `/avatar [user]` | Displays avatar of user, provides links to the avatar.
 `/say [message]` | Repeats message given by the user in an embed. 
 `/help`          | Displays the help message for the bot.
