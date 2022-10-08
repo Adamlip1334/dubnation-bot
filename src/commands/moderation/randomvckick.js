@@ -22,11 +22,12 @@ module.exports = {
 
 		let member = members[Math.floor(Math.random()*members.length)];
 
+		const tag = `${member.user.username}#${member.user.discriminator}`
 		let emb = new MessageEmbed()
-			.setTitle(`Kick ${member.tag}`)
+			.setTitle(`Kick ${tag}`)
 			.addField('Server', `**\`${interaction.guild.name}\`**`, true)
 			.addField('Moderator', `**\`${interaction.member.user.tag}\`**`, true)
-			.addField('User', `**\`${member.tag}\`**`, true)
+			.addField('User', `**\`${tag}\`**`, true)
 			.addField('Channel', `**<#${channel.id}>**`, false)
 			.setThumbnail(member.displayAvatarURL())
 			.setTimestamp()
