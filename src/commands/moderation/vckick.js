@@ -31,7 +31,7 @@ module.exports = {
 			.setColor('RED');
 
 		try {
-			findMem.voice.disconnect();
+			await findMem.voice.disconnect();
 		} catch (e) {
 			return interaction.reply({ content: '**❌ | I do not have the correct permissions to disconnect this member.**', ephemeral: true });
 		}
