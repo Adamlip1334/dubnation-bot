@@ -22,6 +22,8 @@ module.exports = {
 				.addField('**Help**', '```Shows this help message```')
 				.addField('**Avatar**', '```Displays avatar of user, provides links to the avatar.```')
 				.addField('**VcKick**', '```Kicks user from the voice channel they are in.```')
+				.addField('**VcKickAll**', '```Kicks all users from the voice channel specified.```')
+				.addField('**RandomVcKick**', '```Kicks a random user in the voice channel specified.```')
 				.addField('**Ping**', '```Displays the latency of the bot.```')
 				.addField('**Kick**', '```Kicks the user from the guild.```')
 				.addField('**Say**', '```Repeats message given by the user in an embed.```')
