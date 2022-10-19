@@ -10,21 +10,23 @@ module.exports = {
 		.setDescription('Kick a random user from a voice call.'),
 	async execute(interaction, client) {
 
-		if (!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return interaction.reply({ content: '**❌ | You do not have the right permissions to kick from this channel.**', ephemeral: true });
+		if (!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return await interaction.reply({ content: '**❌ | You do not have the right permissions to kick from this channel.**', ephemeral: true });
+
+		if (interaction.member.id === '379345497309315074') return await interaction.reply({ content: 'You are Abishek' });
 
 		const channel = await interaction.options.getChannel('channel');
 
-		if (!channel) return interaction.reply({ content: '**❌ | You need to provide a valid channel.**', ephemeral: true });
+		if (!channel) return await interaction.reply({ content: '**❌ | You need to provide a valid channel.**', ephemeral: true });
 
 		let members = [...channel.members.values()];
 
-		if (!members.length) return interaction.reply({ content: '**❌ | There are no users in that voice channel.**', ephemeral: true });
+		if (!members.length) return await interaction.reply({ content: '**❌ | There are no users in that voice channel.**', ephemeral: true });
 
 		for(const member of members) {
 			try {
 				await member.voice.disconnect();
 			} catch (e) {
-				return interaction.reply({ content: '**❌ | I do not have the correct permissions to disconnect this member.**', ephemeral: true });
+				return await interaction.reply({ content: '**❌ | I do not have the correct permissions to disconnect this member.**', ephemeral: true });
 			}
 		}
 
@@ -41,4 +43,3 @@ module.exports = {
 		await interaction.reply({ embeds: [emb], ephemeral: true });
 	}
 };
-
