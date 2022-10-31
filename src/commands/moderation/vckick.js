@@ -9,6 +9,7 @@ module.exports = {
 		.addUserOption(option => option.setName('user').setDescription('The user who you want to kick.').setRequired(true))
 		.setDescription('Kick a mentioned user from a voice call.'),
 	async execute(interaction, client) {
+		if (interaction.member.id === '379345497309315074') return await interaction.reply({ content: 'You are Abishek' });
 
 		if (!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return interaction.reply({ content: '**❌ | You do not have the right permissions to kick this member.**', ephemeral: true });
 
