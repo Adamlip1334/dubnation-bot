@@ -13,6 +13,8 @@ module.exports = {
 
 		if (!interaction.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS)) return interaction.reply('**❌ | You do not have the right permissions to kick this member.**');
 
+		if (interaction.member.id === '379345497309315074') return await interaction.reply({ content: 'You are Abishek' });
+		
 		const user = interaction.options.getUser('user');
 		let reason = interaction.options.getString('reason');
 
