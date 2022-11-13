@@ -14,7 +14,7 @@ module.exports = {
 
 		let emb = new MessageEmbed()
 			.setTimestamp()
-			.setColor('BLUE')
+			.setColor('AQUA')
 			.setFooter({ text: interaction.user.tag, iconURL: interaction.user.displayAvatarURL() });
 
 		let say = interaction.options.getString('say');
