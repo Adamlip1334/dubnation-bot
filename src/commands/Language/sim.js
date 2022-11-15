@@ -2,7 +2,7 @@ const config = require('../../../config');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const db = require('../../index').db;
-const nlp = require('compromise');
+const nlp = require('compromise/one');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -19,7 +19,7 @@ module.exports = {
 		let newText = '';
 		for (const word of format.split(' ')) {
 			if (word.startsWith('#')) {
-				newText += await nlp(randomizeString(messages)).matchOne(word).text() + ' ';
+				newText += nlp(randomizeString(messages)).matchOne(word).text() + ' ';
 			} else {
 				newText += word + ' '
 			}
