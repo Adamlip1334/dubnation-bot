@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "format": "npx prettier . --write",
+    "format:check": "npx prettier . --check",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
