@@ -1,4 +1,4 @@
-var config = module.exports = {};
+var config = (module.exports = {});
 config.general = {};
 config.settings = {};
 config.embeds = {};
