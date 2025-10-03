@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "format": "npx prettier . --write",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -30,5 +31,8 @@
   "engines": {
     "node": "18.3.0",
     "npm": "8.12.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
   }
 }
