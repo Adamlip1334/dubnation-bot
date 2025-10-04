@@ -11,7 +11,7 @@ module.exports = {
         .setDescription("The user who's avatar you want to show."),
     )
     .setDescription('Gets the avatar of the mentioned user.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     let user = interaction.options.getUser('user');
     if (!user) user = interaction.user;
 

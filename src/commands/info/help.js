@@ -19,7 +19,7 @@ module.exports = {
           { name: 'music', value: 'music' },
         ),
     ),
-  async execute(interaction, client) {
+  async execute(interaction) {
     const category = interaction.options.getString('category');
     if (category === 'general') {
       let emb = new MessageEmbed()

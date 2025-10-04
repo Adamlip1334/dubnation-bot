@@ -1,4 +1,3 @@
-const config = require('../../../config');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const db = require('../../index').db;
@@ -20,7 +19,7 @@ module.exports = {
         .setRequired(true),
     )
     .setDescription('Simulates the given user.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     await interaction.deferReply();
     let user = interaction.options.getUser('user');
     let format = interaction.options.getString('format');
@@ -48,7 +47,7 @@ function randomizeString(object) {
   for (const [key, value] of Object.entries(object)) {
     text += (key + ' ').repeat(value);
   }
-  arr = text.slice(0, -1).split(' ');
+  let arr = text.slice(0, -1).split(' ');
   shuffle(arr);
   text = '';
   for (const word of arr) {

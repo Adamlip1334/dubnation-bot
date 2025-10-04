@@ -31,7 +31,7 @@ const eventsFiles = fs
 const commandFolders = fs.readdirSync('./src/commands');
 
 (async () => {
-  for (file of functions) {
+  for (const file of functions) {
     require(`./functions/${file}`)(client);
   }
 

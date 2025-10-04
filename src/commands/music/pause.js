@@ -1,5 +1,3 @@
-const config = require('../../../config');
-const search = require('discord.js-search');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const queue = require('../../index');
 const { AudioPlayerStatus } = require('@discordjs/voice');
@@ -8,7 +6,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('pause')
     .setDescription('Pauses/unpauses the current playing song.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     if (queue.queue[interaction.guild.id].player) {
       if (
         queue.queue[interaction.guild.id].player.state.status ==

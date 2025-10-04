@@ -1,5 +1,4 @@
 const config = require('../../../config');
-const search = require('discord.js-search');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const queue = require('../../index');
 const { MessageEmbed } = require('discord.js');
@@ -8,7 +7,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('queue')
     .setDescription('Displays the song queue.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     if (
       queue.queue[interaction.guild.id] &&
       queue.queue[interaction.guild.id].songs.length > 0

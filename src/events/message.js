@@ -1,11 +1,11 @@
 const db = require('../index').db;
 module.exports = {
   name: 'messageCreate',
-  async execute(message, client) {
+  async execute(message) {
     if (message.author.bot) {
       return;
     }
-    words = message.content
+    const words = message.content
       .toLowerCase()
       .replace(/['.?,!]/g, '')
       .replace(/\s+/g, ' ')
@@ -18,7 +18,7 @@ module.exports = {
     if (Object.keys(words).length == 0) {
       return;
     }
-    set = {
+    const set = {
       $inc: words,
     };
     await db

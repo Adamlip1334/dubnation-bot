@@ -1,13 +1,11 @@
-const config = require('../../../config');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
 const queue = require('../../index');
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('loop')
     .setDescription('Loops the currently playing song.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     if (queue.queue[interaction.guild.id]) {
       if (queue.queue[interaction.guild.id].mode == 'loop') {
         queue.queue[interaction.guild.id].mode = 'default';

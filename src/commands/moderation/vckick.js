@@ -13,7 +13,7 @@ module.exports = {
         .setRequired(true),
     )
     .setDescription('Kick a mentioned user from a voice call.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     if (interaction.member.id === '379345497309315074')
       return await interaction.reply({ content: 'You are Abishek' });
 
@@ -53,6 +53,7 @@ module.exports = {
     try {
       await findMem.voice.disconnect();
     } catch (e) {
+      console.error(e);
       return interaction.reply({
         content:
           '**❌ | I do not have the correct permissions to disconnect this member.**',

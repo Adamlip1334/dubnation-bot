@@ -18,7 +18,7 @@ module.exports = {
         .setDescription('The reason why you are kicking the user'),
     )
     .setDescription('Kick a mentioned user with a reason.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     if (!interaction.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
       return interaction.reply(
         '**❌ | You do not have the right permissions to kick this member.**',
@@ -53,6 +53,7 @@ module.exports = {
     try {
       findMem.kick(reason);
     } catch (e) {
+      console.error(e);
       return interaction.reply(
         '**❌ | I do not have the correct permissions to kick this member.**',
       );

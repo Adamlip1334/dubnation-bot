@@ -1,13 +1,11 @@
-const config = require('../../../config');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
 const queue = require('../../index');
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('shuffle')
     .setDescription('Shuffles the songs in the queue.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     if (queue.queue[interaction.guild.id]) {
       let arr = queue.queue[interaction.guild.id].songs;
       for (let i = arr.length - 1; i > 1; i--) {
