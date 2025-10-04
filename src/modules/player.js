@@ -3,10 +3,8 @@ const queue = require('../index');
 
 const {
   AudioPlayerStatus,
-  StreamType,
   createAudioPlayer,
   createAudioResource,
-  joinVoiceChannel,
 } = require('@discordjs/voice');
 
 module.exports = {
@@ -21,6 +19,7 @@ module.exports = {
     try {
       stream = await ytdl.stream(song);
     } catch (error) {
+      console.error(error);
       songqueue.songs.shift();
       await channel.send(
         `Could not play song: https://www.youtube.com/watch?v=${song}`,
@@ -37,7 +36,7 @@ module.exports = {
     player.play(resource);
     await channel.send(`Now Playing: https://www.youtube.com/watch?v=${song}`);
     player.on(AudioPlayerStatus.Idle, () => {
-      oldsong = songqueue.songs.shift();
+      const oldsong = songqueue.songs.shift();
       if (songqueue.mode == 'loop') {
         songqueue.songs.unshift(oldsong);
       } else if (songqueue.mode == 'loopqueue') {

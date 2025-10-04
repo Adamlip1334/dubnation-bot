@@ -1,14 +1,11 @@
-const config = require('../../../config');
-const search = require('discord.js-search');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const queue = require('../../index');
-const { MessageEmbed } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('nowplaying')
     .setDescription('Displays the current playing song.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     if (queue.queue[interaction.guild.id]) {
       const song = queue.queue[interaction.guild.id].songs[0];
       return interaction.reply(

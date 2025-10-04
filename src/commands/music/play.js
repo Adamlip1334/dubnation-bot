@@ -1,4 +1,3 @@
-const config = require('../../../config');
 const search = require('discord.js-search');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const fetch = (...args) =>
@@ -6,10 +5,6 @@ const fetch = (...args) =>
 const queue = require('../../index');
 const songplayer = require('../../modules/player');
 const {
-  AudioPlayerStatus,
-  StreamType,
-  createAudioPlayer,
-  createAudioResource,
   joinVoiceChannel,
   VoiceConnectionStatus,
   entersState,
@@ -25,10 +20,10 @@ module.exports = {
         .setRequired(true),
     )
     .setDescription('Play a specified song.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     const url = interaction.options.get('song').value;
     var regExp =
-      /(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be\/|be.com\/\S*(?:watch|embed)(?:(?:(?=\/[^&\s\?]+(?!\S))\/)|(?:\S*v=|v\/)))([^&\s\?]+)/;
+      /(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be\/|be.com\/\S*(?:watch|embed)(?:(?:(?=\/[^&\s?]+(?!\S))\/)|(?:\S*v=|v\/)))([^&\s?]+)/;
     var match = url.match(regExp);
     let song;
     if (match && match[1].length == 11) {
@@ -54,20 +49,18 @@ module.exports = {
         guildId: interaction.guild.id,
         adapterCreator: interaction.guild.voiceAdapterCreator,
       });
-      connection.on(
-        VoiceConnectionStatus.Disconnected,
-        async (oldState, newState) => {
-          try {
-            await Promise.race([
-              entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
-              entersState(connection, VoiceConnectionStatus.Connecting, 5_000),
-            ]);
-          } catch (error) {
-            connection.destroy();
-            delete queue.queue[interaction.guild.id];
-          }
-        },
-      );
+      connection.on(VoiceConnectionStatus.Disconnected, async () => {
+        try {
+          await Promise.race([
+            entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
+            entersState(connection, VoiceConnectionStatus.Connecting, 5_000),
+          ]);
+        } catch (error) {
+          console.error(error);
+          connection.destroy();
+          delete queue.queue[interaction.guild.id];
+        }
+      });
       queue.queue[interaction.guild.id] = {
         mode: 'default',
         connection: connection,

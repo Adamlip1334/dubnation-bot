@@ -1,4 +1,3 @@
-const config = require('../../../config');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
@@ -10,7 +9,7 @@ module.exports = {
         .setDescription('Question to ask the magical 8 ball'),
     )
     .setDescription('Asks the magical 8 ball a question'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     const question = interaction.options.getString('question');
 
     if (!question) {

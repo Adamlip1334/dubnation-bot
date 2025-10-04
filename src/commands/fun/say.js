@@ -1,4 +1,3 @@
-const config = require('../../../config');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed, Permissions } = require('discord.js');
 
@@ -22,7 +21,7 @@ module.exports = {
         .setDescription('The channel you want to say this in.'),
     )
     .setDescription('Say something in a channel.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     if (!interaction.member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES))
       return interaction.reply(
         '**❌ | You do not have the right permissions to use this command.**',

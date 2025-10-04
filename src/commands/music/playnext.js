@@ -1,5 +1,3 @@
-const config = require('../../../config');
-const search = require('discord.js-search');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const queue = require('../../index');
 const fetch = (...args) =>
@@ -16,11 +14,11 @@ module.exports = {
         .setRequired(true),
     )
     .setDescription('Plays the provided song next in the queue.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     if (queue.queue[interaction.guild.id]) {
       const url = interaction.options.get('song').value;
       var regExp =
-        /(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be\/|be.com\/\S*(?:watch|embed)(?:(?:(?=\/[^&\s\?]+(?!\S))\/)|(?:\S*v=|v\/)))([^&\s\?]+)/;
+        /(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be\/|be.com\/\S*(?:watch|embed)(?:(?:(?=\/[^&\s?]+(?!\S))\/)|(?:\S*v=|v\/)))([^&\s?]+)/;
       var match = url.match(regExp);
       let song;
       if (match && match[1].length == 11) {
@@ -41,7 +39,7 @@ module.exports = {
           ' has been added to the queue.',
       );
     } else {
-      play.execute(interaction, client);
+      play.execute(interaction);
     }
   },
 };

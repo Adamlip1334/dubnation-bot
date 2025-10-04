@@ -6,7 +6,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('simhelp')
     .setDescription('Provides options for /sim.'),
-  async execute(interaction, client) {
+  async execute(interaction) {
     let emb = new MessageEmbed()
       .setTitle(`Sim Help`)
       .addField(
